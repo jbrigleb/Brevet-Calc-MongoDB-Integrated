@@ -1,0 +1,55 @@
+</html>
+<head>
+  <title>Database Controles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+  }
+  
+  
+  
+  </style>
+  
+</head>
+<body>
+<h1>Saved Controles</h1>
+<p id="texto">These are the controles stored in the database</p>
+  
+{% for entry in entries %}
+  <div class="row">
+  
+    <div class="column">
+        <p> Controle Distance: {{ entry.km }}km </p>
+    </div>
+    
+    <div class="column">
+        <p> Location: {{ entry.location }} </p>
+    </div>
+    
+    <div class="column">
+        <p> Opening Time: {{ entry.open }} </p>
+    </div>
+    
+    <div class="column">
+        <p> Closing Time: {{ entry.close }} </p>
+    </div>
+    
+  </div>
+{% endfor %}  
+<div class = "row">  
+<form>
+<input type="button" value = "Back to calculator" 
+onclick = "window.location.href = '/'"/>
+</form>
+</div>
+
+</body>
+</html>
