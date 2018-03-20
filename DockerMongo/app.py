@@ -2,6 +2,9 @@ import os
 import flask
 from flask import Flask, redirect, url_for, request, render_template
 from pymongo import MongoClient
+import arrow  # Replacement for datetime, based on moment.js
+import acp_times  # Brevet time calculations
+import config
 
 app = Flask(__name__)
 
@@ -65,7 +68,7 @@ def display():
     for entry in db.tododb.find():
         dili.append(entry)
     
-    flask.render_template('display_test.html',entries = dili)
+    return flask.render_template('display_test.html',entries = dili), 200
 
 
 @app.route('/new', methods=['POST'])
@@ -77,13 +80,12 @@ def new():
     clli = request.form.getlist("close")
     for i in range(0, len(kmli)):
         if kmli[i] != "":
-            item = {
+            db.tododb.insert_one({
                 'km': kmli[i],
                 'location': loli[i],
                 'open': opli[i],
                 'close': clli[i]
-            }
-        db.tododb.insert_one(item)
+            })
 
     return redirect("/index")
 
