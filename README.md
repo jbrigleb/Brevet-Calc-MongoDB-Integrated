@@ -1,6 +1,8 @@
 # Project 5: Brevet time calculator with Ajax and MongoDB
 
-reads in and out of mongoDB now. has a separate page for displaying database contents
+Extension of the project found the in the Brevet Time Calculator repository.
+
+Reads in and out of mongoDB now. Has a separate page for displaying database contents
 
 
 ## Author
